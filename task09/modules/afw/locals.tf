@@ -1,7 +1,7 @@
 locals {
   name_prefix = var.name_prefix
 
-  afw_name           = join("", [local.name_prefix, "afw"])
+  afw_name           = "AzureFirewallSubnet"
   afw_sku_name       = "AZFW_VNet"
   afw_subnet_name    = join("", [local.name_prefix, "afw-snet"])
   afw_public_ip_name = join("", [local.name_prefix, "pip"])
