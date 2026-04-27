@@ -1,13 +1,13 @@
-name_prefix = "cmtr-2ehw6cyk-mod9"
+name_prefix = "cmtr-2ehw6cyk-mod9-"
 
 application_rules_protocol = [
   {
-    type = "Http"
-    port = 80
+    protocol_type = "Http"
+    port          = 80
   },
   {
-    type = "Https"
-    port = 443
+    protocol_type = "Https"
+    port          = 443
   }
 ]
 

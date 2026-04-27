@@ -7,8 +7,8 @@ variable "name_prefix" {
 variable "application_rules_protocol" {
   description = "Protocol for the application rule (e.g., Http, Https)"
   type = list(object({
-    type = string
-    port = number
+    protocol_type = string
+    port          = number
   }))
 }
 

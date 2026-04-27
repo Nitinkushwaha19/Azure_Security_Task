@@ -57,7 +57,7 @@ resource "azurerm_subnet_route_table_association" "association" {
 
 # Firewall application rules
 resource "azurerm_firewall_application_rule_collection" "app_rule_collection" {
-  name                = "${local.name_prefix}-app-rule-collection"
+  name                = join("", [local.name_prefix, "app-rule-collection"])
   azure_firewall_name = azurerm_firewall.afw.name
   resource_group_name = var.rg_name
   priority            = 100
@@ -71,7 +71,7 @@ resource "azurerm_firewall_application_rule_collection" "app_rule_collection" {
     dynamic "protocol" {
       for_each = var.application_rules_protocol
       content {
-        type = protocol.value.type
+        type = protocol.value.protocol_type
         port = protocol.value.port
       }
     }
@@ -80,7 +80,7 @@ resource "azurerm_firewall_application_rule_collection" "app_rule_collection" {
 
 # Firewall network rules
 resource "azurerm_firewall_network_rule_collection" "net_rule_collection" {
-  name                = "${local.name_prefix}-net-rule-collection"
+  name                = join("", [local.name_prefix, "net-rule-collection"])
   azure_firewall_name = azurerm_firewall.afw.name
   resource_group_name = var.rg_name
   priority            = 200
@@ -97,7 +97,7 @@ resource "azurerm_firewall_network_rule_collection" "net_rule_collection" {
 
 # Firewall NAT rules
 resource "azurerm_firewall_nat_rule_collection" "nat_rule_collection" {
-  name                = "${local.name_prefix}-nat-rule-collection"
+  name                = join("", [local.name_prefix, "nat-rule-collection"])
   azure_firewall_name = azurerm_firewall.afw.name
   resource_group_name = var.rg_name
   priority            = 300
